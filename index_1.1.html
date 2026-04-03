@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LHS – Legendary House Sitters | House & Pet Sitting in JHB & PTA</title>
+  <meta name="description" content="Trusted house sitting, pet sitting, and dog walking in Johannesburg & Pretoria. Daily WhatsApp updates, flexible bookings, and caring service.">
+  <style>
+    :root{
+      --black:#000000;
+      --brown:#8A3B20; /* paw print brown */
+      --orange:#FF7A00;
+      --white:#FFFFFF;
+      --off:#F7F7F7;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:#222;background:var(--white)}
+    /* Header */
+    .nav{
+      position:fixed;top:0;left:0;right:0;z-index:1000;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:16px 28px; transition:background .25s, box-shadow .25s;
+      background:transparent;
+    }
+    .nav.scrolled{background:rgba(0,0,0,0.9);box-shadow:0 6px 18px rgba(0,0,0,.25)}
+    .brand{display:flex;gap:12px;align-items:center;color:var(--white);text-decoration:none}
+    .brand img{height:36px;width:auto}
+    .brand span{font-weight:700;letter-spacing:.5px}
+    .menu{display:flex;gap:22px;align-items:center}
+    .menu a{color:var(--white);text-decoration:none;font-weight:600;opacity:.9}
+    .menu a:hover{opacity:1}
+    .btn{padding:12px 18px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+    .btn-cta{background:var(--orange);color:var(--black);box-shadow:0 6px 20px rgba(255,122,0,.35)}
+    .btn-cta:hover{transform:translateY(-1px)}
+    /* Hero */
+    .hero{
+      min-height:100svh;display:grid;place-items:center;position:relative;color:var(--white);text-align:center;
+      background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.55)), url('hero.jpg') center/cover fixed no-repeat;
+    }
+    .hero .inner{max-width:900px;padding:120px 24px 80px}
+    h1{font-size:clamp(28px,5vw,56px);margin:14px 0 8px}
+    .tag{font-size:clamp(16px,2.4vw,24px);opacity:.95}
+    .hero .cta{margin-top:26px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .pill{padding:10px 16px;border-radius:999px;border:2px solid var(--brown);color:var(--white)}
+    /* Sections */
+    section{padding:88px 20px}
+    .wrap{max-width:var(--maxw);margin:0 auto}
+    .eyebrow{color:var(--brown);font-weight:800;text-transform:uppercase;letter-spacing:.15em;font-size:12px}
+    h2{font-size:clamp(24px,4vw,36px);margin:8px 0 18px}
+    p.lead{font-size:18px;opacity:.85}
+    /* Services grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}}
+    .card{
+      padding:22px;border:1px solid #eee;border-radius:14px;background:#fff;
+      box-shadow:0 12px 28px rgba(0,0,0,.06); transition:transform .2s, box-shadow .2s;
+    }
+    .card:hover{transform:translateY(-4px); box-shadow:0 20px 36px rgba(0,0,0,.1)}
+    .icon{
+      width:38px;height:38px;border-radius:10px;display:grid;place-items:center;margin-bottom:10px;
+      background:linear-gradient(135deg,var(--brown),#6d2f18); color:#fff;font-weight:900
+    }
+    .parallax-band{
+      background:linear-gradient(rgba(138,59,32,.80),rgba(0,0,0,.85)), url('areas.jpg') center/cover fixed no-repeat;
+      color:#fff;text-align:center
+    }
+    .band-inner{max-width:900px;margin:0 auto;padding:84px 20px}
+    /* Testimonials */
+    .testi{position:relative;overflow:hidden}
+    .slider{display:flex;gap:24px;transition:transform .5s}
+    .quote{
+      min-width:calc(100% - 24px);background:#fff;border:1px solid #eee;padding:28px;border-radius:16px;
+      box-shadow:0 8px 24px rgba(0,0,0,.08)
+    }
+    .stars{color:#f4b400}
+    .dots{display:flex;gap:8px;justify-content:center;margin-top:14px}
+    .dot{width:10px;height:10px;border-radius:50%;background:#ddd;cursor:pointer}
+    .dot.active{background:var(--orange)}
+    /* Contact */
+    .contact{background:var(--off)}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+    form textarea{grid-column:1/-1;min-height:120px}
+    form input, form select, form textarea{
+      padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:16px
+    }
+    .actions{display:flex;gap:12px;align-items:center;margin-top:8px}
+    .wafloat{
+      position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:50%;
+      background:#25D366;display:grid;place-items:center;color:#fff;font-weight:900;
+      box-shadow:0 10px 22px rgba(0,0,0,.25);z-index:1000;text-decoration:none
+    }
+    footer{padding:32px 20px;background:#0b0b0b;color:#ccc}
+    footer a{color:#ddd;text-decoration:none}
+    /* Utilities */
+    .muted{opacity:.75}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="nav" id="nav">
+    <a class="brand" href="#home">
+      <img src="lhs-logo.png" alt="LHS logo">
+      <span>LHS – Legendary House Sitters</span>
+    </a>
+    <nav class="menu">
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-cta" href="#contact">Request a Quote</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home" aria-label="Hero">
+    <div class="inner">
+      <div class="pill">Johannesburg • Pretoria</div>
+      <h1>Legendary House Sitters</h1>
+      <p class="tag">Where Your Pets Feel at Home — Even When You’re Away.</p>
+      <div class="cta">
+        <a class="btn btn-cta" href="#contact">Request a Quote</a>
+        <a class="btn pill" href="tel:+27840592599">Call 084 059 2599</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="wrap">
+      <div class="eyebrow">Our Services</div>
+      <h2>House & Pet Care You Can Count On</h2>
+      <p class="lead muted">Reliable care with daily WhatsApp updates. Flexible options for every home and every pet.</p>
+      <div class="grid" role="list">
+        <article class="card" role="listitem">
+          <div class="icon">🏠</div>
+          <h3>House Sitting</h3>
+          <p>Security checks, lights & curtains, bins, mail, plants — with photo updates for peace of mind.</p>
+        </article>
+        <article class="card" role="listitem">
+          <div class="icon">🐾</div>
+          <h3>Pet Sitting</h3>
+          <p>Feeding, playtime, cuddles, litter/yard checks, and medication if needed. Routines respected.</p>
+        </article>
+        <article class="card" role="listitem">
+          <div class="icon">🐕</div>
+          <h3>Dog Walking</h3>
+          <p>Safe, happy walks around your neighborhood. Choose pace and route; we send cheerful updates.</p>
+        </article>
+        <article class="card" role="listitem">
+          <div class="icon">🌙</div>
+          <h3>Overnight Stays</h3>
+          <p>Overnight peace of mind for homes and pets that prefer company after dark.</p>
+        </article>
+        <article class="card" role="listitem">
+          <div class="icon">⏱️</div>
+          <h3>Drop‑in Visits</h3>
+          <p>Quick, flexible visits for feeding, litter, and check‑ins — perfect for busy days.</p>
+        </article>
+        <article class="card" role="listitem">
+          <div class="icon">🌿</div>
+          <h3>Add‑ons & Checks</h3>
+          <p>Feeding & medication, plant/garden watering, alarm coordination, and more.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section id="why">
+    <div class="wrap">
+      <div class="eyebrow">Why Choose Us</div>
+      <h2>Trusted, Caring & Local</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🛡️</div>
+          <h3>Trusted & Reliable</h3>
+          <p>Professional and punctual. Your home and pets are treated with respect and responsibility.</p>
+        </div>
+        <div class="card">
+          <div class="icon">❤️</div>
+          <h3>Pet‑First Care</h3>
+          <p>Low‑stress routines and enrichment to keep pets calm, healthy, and happy.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📱</div>
+          <h3>Daily Updates</h3>
+          <p>WhatsApp messages and photos so you’re always in the loop.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📍</div>
+          <h3>JHB & PTA</h3>
+          <p>Roodepoort, Randburg, Sandton, Fourways, Midrand, Centurion, Pretoria & surrounds.</p>
+        </div>
+        <div class="card">
+          <div class="icon">💬</div>
+          <h3>Clear Quotes</h3>
+          <p>Simple, transparent pricing tailored to your needs — no surprises.</p>
+        </div>
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Flexible & Fast</h3>
+          <p>Short‑notice friendly and easy to book. We work around your schedule.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas Parallax Band -->
+  <section class="parallax-band" aria-label="Service Areas">
+    <div class="band-inner">
+      <h2>Johannesburg & Pretoria</h2>
+      <p>Roodepoort • Randburg • Sandton • Fourways • Midrand • Centurion • Pretoria & surrounds</p>
+      <a class="btn btn-cta" href="#contact">Request a Quote</a>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="wrap">
+      <div class="eyebrow">Testimonials</div>
+      <h2>What Our Clients Say</h2>
+      <div class="testi">
+        <div class="slider" id="slider">
+          <div class="quote">
+            <div class="stars">★★★★★</div>
+            <p>“Came back to a spotless home and a very happy pup. Daily updates were amazing!”</p>
+            <div class="muted">— Thandi, Randburg</div>
+          </div>
+          <div class="quote">
+            <div class="stars">★★★★★</div>
+            <p>“Professional and kind. My cats warmed up instantly. Highly recommend.”</p>
+            <div class="muted">— Morné, Roodepoort</div>
+          </div>
+          <div class="quote">
+            <div class="stars">★★★★★</div>
+            <p>“Felt safe being away. Plants alive, mail handled, dog ecstatic.”</p>
+            <div class="muted">— Ayesha, Centurion</div>
+          </div>
+        </div>
+        <div class="dots">
+          <div class="dot active" data-i="0"></div>
+          <div class="dot" data-i="1"></div>
+          <div class="dot" data-i="2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="eyebrow">Contact</div>
+      <h2>Request a Quote</h2>
+      <p class="lead">Tell us about your home and pets — we’ll reply with a tailored quote.</p>
+      <div class="row">
+        <div style="flex:1 1 420px">
+          <form name="enquiry" action="mailto:info@legendaryhousesitters.co.za" method="post" enctype="text/plain">
+            <input type="text" name="Name" placeholder="Your name" required>
+            <input type="tel" name="Phone" placeholder="Phone / WhatsApp" required>
+            <input type="email" name="Email" placeholder="Email (optional)">
+            <input type="text" name="Suburb" placeholder="Suburb (e.g., Roodepoort)" required>
+            <select name="Service">
+              <option>House Sitting</option>
+              <option>Pet Sitting</option>
+              <option>Dog Walking</option>
+              <option>Overnight Stays</option>
+              <option>Drop‑in Visits</option>
+            </select>
+            <input type="text" name="Dates" placeholder="Dates (e.g., 12–18 May)">
+            <textarea name="Details" placeholder="Pet names, routines, medication, access info…"></textarea>
+            <div class="actions">
+              <button class="btn btn-cta" type="submit">Send Request</button>
+              <a class="pill" href="tel:+27840592599">Call 084 059 2599</a>
+            </div>
+          </form>
+          <p class="muted" style="margin-top:10px">We respect your privacy. Your details are only used to respond to your enquiry.</p>
+        </div>
+        <div style="flex:1 1 300px">
+          <div class="card">
+            <h3>Contact Details</h3>
+            <p><strong>Phone:</strong> <a href="tel:+27840592599">084 059 2599</a></p>
+            <p><strong>Website:</strong> <a href="https://legendaryhousesitters.co.za">legendaryhousesitters.co.za</a></p>
+            <p><strong>Areas:</strong> Johannesburg & Pretoria</p>
+            <p class="muted">Prefer WhatsApp? Use the green button.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a class="wafloat" aria-label="WhatsApp" href="https://wa.me/27840592599">WA</a>
+
+  <footer>
+    <div class="wrap">
+      <div style="display:flex;gap:14px;align-items:center;margin-bottom:10px">
+        <img src="lhs-logo.png" alt="LHS logo" style="height:28px">
+        <strong>LHS – Legendary House Sitters</strong>
+      </div>
+      <div class="muted">© 2026. Johannesburg & Pretoria. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY>60);
+    document.addEventListener('scroll', onScroll); onScroll();
+
+    // Testimonials slider
+    const slider = document.getElementById('slider');
+    const dots = [...document.querySelectorAll('.dot')];
+    let idx = 0;
+    function go(i){ idx=i; slider.style.transform = `translateX(-${i*100}%)`; dots.forEach((d,j)=>d.classList.toggle('active', j===i)); }
+    dots.forEach(d=>d.addEventListener('click', e => go(+e.target.dataset.i)));
+    setInterval(()=> go((idx+1)%3), 6000);
+  </script>
+</body>
+</html>
